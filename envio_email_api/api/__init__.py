@@ -8,6 +8,7 @@ from formsteps.forms import FormStep
 from ..envio_email.envio_email import SendEMail
 from ..login import check_login_user, token_valid
 from ..utils import ArgumentsParser
+import requests
 
 class EnvioEmailApi(Api):
     pass
@@ -167,6 +168,20 @@ class Subasta(SecuredResource):
 
 
 
+class Verificar_Captcha(Resource):
+        def post(self, token):
+            recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
+            recaptcha_secret_key = ''
+            payload = {
+                'secret': recaptcha_secret_key,
+                'response': token,
+                'remoteip': request.remote_addr,
+            }
+            response = requests.post(recaptcha_url, data=payload)
+            result = response.json()
+            return result.get('success', False)
+
+
 
 
 local_resources = [
@@ -175,6 +190,8 @@ local_resources = [
     (UserTokenValid, '/is_token_valid'),
     (Subasta, '/subasta/<string:subasta>/'),
     (Envio_Sencillo_Email, '/envio_email/<string:email_destino>/'),
+    (Verificar_Captcha, '/verificar/<string:token>/'),
+
 ]
 
 resources = (local_resources
