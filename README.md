@@ -5,6 +5,8 @@
 En este proyecto vamos a realizar una pequeña investigación de cómo enviar un correo electrónico a través de un código 
 python. Mas información en la web https://1938.com.es/api_implementacion
 
+Además, está relacionado los artículos https://1938.com.es/ejemplo-captcha y   https://1938.com.es/instalacion-hcaptcha
+
 ### Files
 
 En este repositorio se pueden encontrar los siguientes ficheros:

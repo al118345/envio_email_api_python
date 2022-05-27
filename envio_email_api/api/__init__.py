@@ -167,7 +167,9 @@ class Subasta(SecuredResource):
             enviar_email.send_email_puja_nueva(i,doc.to_dict() )
 
 
-
+'''
+Función destinada a realizar una verificación de captcha de google
+'''
 class Verificar_Captcha(Resource):
         def post(self, token):
             recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
@@ -182,6 +184,21 @@ class Verificar_Captcha(Resource):
             return result.get('success', False)
 
 
+'''
+Función destinada a realizar una verificación de hCaptcha
+'''
+class Verificar_HCaptcha(Resource):
+        def post(self, token):
+            recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
+            recaptcha_secret_key = 'Secret_key_hcaptcha'
+            payload = {
+                'secret': recaptcha_secret_key,
+                'response': token,
+                'remoteip': request.remote_addr,
+            }
+            response = requests.post(recaptcha_url, data=payload)
+            result = response.json()
+            return result.get('success', False)
 
 
 local_resources = [
@@ -191,6 +208,7 @@ local_resources = [
     (Subasta, '/subasta/<string:subasta>/'),
     (Envio_Sencillo_Email, '/envio_email/<string:email_destino>/'),
     (Verificar_Captcha, '/verificar/<string:token>/'),
+    (Verificar_HCaptcha, '/verificar/<string:token>/'),
 
 ]
 
