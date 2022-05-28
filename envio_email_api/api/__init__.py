@@ -189,7 +189,7 @@ Función destinada a realizar una verificación de hCaptcha
 '''
 class Verificar_HCaptcha(Resource):
         def post(self, token):
-            recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
+            recaptcha_url = 'https://hcaptcha.com/siteverify'
             recaptcha_secret_key = 'Secret_key_hcaptcha'
             payload = {
                 'secret': recaptcha_secret_key,
