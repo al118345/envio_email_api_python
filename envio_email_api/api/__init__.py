@@ -190,7 +190,7 @@ Función destinada a realizar una verificación de hCaptcha
 class Verificar_HCaptcha(Resource):
         def post(self, token):
             recaptcha_url = 'https://hcaptcha.com/siteverify'
-            recaptcha_secret_key = 'Secret_key_hcaptcha'
+            recaptcha_secret_key = '0x0000000000000000000000000000000000000000'
             payload = {
                 'secret': recaptcha_secret_key,
                 'response': token,
@@ -208,7 +208,7 @@ local_resources = [
     (Subasta, '/subasta/<string:subasta>/'),
     (Envio_Sencillo_Email, '/envio_email/<string:email_destino>/'),
     (Verificar_Captcha, '/verificar/<string:token>/'),
-    (Verificar_HCaptcha, '/verificar/<string:token>/'),
+    (Verificar_HCaptcha, '/verificarh/<string:token>/'),
 
 ]
 
