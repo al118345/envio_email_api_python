@@ -9,6 +9,7 @@ from ..envio_email.envio_email import SendEMail
 from ..login import check_login_user, token_valid
 from ..utils import ArgumentsParser
 import requests
+from .test_comunicacion_servidor import test_resources
 
 class EnvioEmailApi(Api):
     pass
@@ -201,7 +202,6 @@ class Verificar_HCaptcha(Resource):
             result = response.json()
             return result.get('success', False)
 
-
 local_resources = [
     (ApiCatchall, '/<path:path>/'),
     (UserToken, '/get_token'),
@@ -213,6 +213,6 @@ local_resources = [
 
 ]
 
-resources = (local_resources
+resources = (local_resources + test_resources
 
 )

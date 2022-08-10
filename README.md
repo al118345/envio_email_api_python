@@ -13,6 +13,8 @@ En este repositorio se pueden encontrar los siguientes ficheros:
 
 * **api/__init__.py** Este fichero recoge el código para ejecutar la api al completo.
 
+* **api/test_comunicacion_servidor.py** Este fichero recoge el código para ejecutar las pruebas presentadas en el artículo https://1938.com.es/usar-api-angular
+
 * **envio_email/envio_email.py** Este fichero recoge el código para enviar un email.
 
 * **password.py** En este fichero se almacena el password de la cuenta de gmail utilizada. 
