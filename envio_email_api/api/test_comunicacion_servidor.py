@@ -6,8 +6,15 @@ from envio_email_api.api import Resource
 import base64
 
 
+'''
+Para más información visita la web https://1938.com.es/usar-api-angular dónde hay una explicación
+completa de estas funciones
+'''
 
 
+'''
+Ejemplo de función que devuelve un json con una información. 
+'''
 class Saludo(Resource):
     def get(self):
         response = jsonify(
@@ -19,10 +26,11 @@ class Saludo(Resource):
 
 
 
-
+'''
+Función para obtener un fichero de una API REST
+'''
 class DescargarFichero(Resource):
     def get(self):
-        print('rte')
         try:
             path = os.path.abspath(os.getcwd())+ '/ejemplo.pdf'
             return send_file(path)
