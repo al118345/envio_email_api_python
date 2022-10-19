@@ -174,7 +174,10 @@ Función destinada a realizar una verificación de captcha de google
 class Verificar_Captcha(Resource):
         def post(self, token):
             recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
-            recaptcha_secret_key = ''
+            #clave de ejemplo
+            recaptcha_secret_key = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+            recaptcha_secret_key = 'tu_clave'
+
             payload = {
                 'secret': recaptcha_secret_key,
                 'response': token,
