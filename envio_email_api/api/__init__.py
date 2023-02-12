@@ -4,11 +4,10 @@ from flask_restful import Resource, Api
 from flask_login import login_required
 from flask_babel import lazy_gettext
 from formsteps.forms import FormStep
-
+import json
 from ..envio_email.envio_email import SendEMail
 from ..login import check_login_user, token_valid
 from ..utils import ArgumentsParser
-import requests
 from .test_comunicacion_servidor import test_resources
 
 class EnvioEmailApi(Api):
@@ -120,7 +119,8 @@ class SecuredResourceFormStep(ResourceFormStep, SecuredResource):
 class UserToken(Resource):
     def post(self):
         g.login_via_header = True
-        token = check_login_user(**request.json)
+        data = json.loads(request.data)
+        token = check_login_user(data.get('user'), data.get('password'))
         return jsonify({
             'token': token
         })
@@ -130,7 +130,8 @@ class UserTokenValid(Resource):
     def post(self):
         # Don't use cookies
         g.login_via_header = True
-        user = token_valid(request.json.get('token'))
+        data = json.loads(request.data)
+        user = token_valid(data.get('token'))
         return jsonify({
             'token_is_valid': user is not None
         })
