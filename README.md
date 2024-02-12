@@ -7,6 +7,7 @@ python. Mas información en la web https://1938.com.es/api_implementacion
 
 Además, está relacionado los artículos https://1938.com.es/ejemplo-captcha y   https://1938.com.es/instalacion-hcaptcha
 
+Python versión 3.7.3.
 ### Files
 
 En este repositorio se pueden encontrar los siguientes ficheros:
@@ -28,11 +29,11 @@ En este repositorio se pueden encontrar los siguientes ficheros:
 ```
 altair==3.0.1
 Babel==2.7.0
-Flask==1.0.3
+flask==2.1.3
 Flask-Babel==0.12.2
 Flask-Cors==3.0.7
 Flask-Login==0.4.1
-Flask-RESTful==0.3.7
+Flask-RESTful==0.3.9
 formsteps==0.1.0
 marshmallow==3.0.0b2
 marshmallow-jsonschema==0.5.0
@@ -45,6 +46,7 @@ pytz==2019.1
 XlsxWriter==1.1.8
 werkzeug==0.16.1
 firebase-admin
+itsdangerous==2.0.1
 ```
 
 ### Installing
